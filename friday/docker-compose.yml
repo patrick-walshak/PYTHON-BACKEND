@@ -1,0 +1,10 @@
+version: "3.9"
+
+services:
+  web:
+    build: .
+    image: dimka90/fastapi:v1.1-slim 
+    container_name: fastapi_container
+    ports:
+      - "8000:8000"
+    
