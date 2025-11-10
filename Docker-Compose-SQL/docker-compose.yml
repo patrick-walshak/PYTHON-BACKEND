@@ -1,0 +1,23 @@
+version: "3.9"
+
+services:
+  db:
+    image: mysql:8.0
+    container_name: market_db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: jos_market
+    ports:
+      - "3306:3306"
+
+  web:
+    build: .
+    container_name: market_api
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: mysql+pymysql://root:root@db:3306/jos_market
+    ports:
+      - "8000:8000"
+    command: uvicorn main:app --host 0.0.0.0 --port 8000

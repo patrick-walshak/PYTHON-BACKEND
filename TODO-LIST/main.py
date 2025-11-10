@@ -36,13 +36,13 @@ def generate_next_id():
     id += 1
 # Endpoints
 
-@app.get("/")
-def index():
-    return{
-        "message": "Todo App"
-    }
+# @app.get("/")
+# def index():
+#     return{
+#         "message": "Todo App"
+#     }
 
-@app.post("/tasks", status_code=status.HTTP_201_CREATED)
+@app.post("/tasks")
 def create_task(task: TaskCreate):
     if not task.title or not task.description:
         raise HTTPException(
@@ -74,23 +74,32 @@ def get_all_task():
        "data": tasks
    }
 
-@app.patch("/tasks/")
+@app.patch("/tasks")
 def partial_update(task: TaskUpdate):
     if not task.title and not task.description:
         raise HTTPException(
-            status_code=status.HTTP_422_UNPROCESSABLE_CONTENT,
-            detail="Atleast One field is required"
+            status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
+            detail="At least one field (title or description) is required"
         )
+
     value_to_update = None
     flag = False
-    if task.title:
-        value_to_update = task.title
-        flag=True
-    else:
-        value_to_update = task.description
-    for  task_in_db in range(len(task_instance._task)):
-        if task_instance._task[task_in_db].id == task.id:
-            if flag:
-                task_instance._task[task_in_db].description = value_to_update
-            else:
-                task_instance._task[task_in_db].title = value_to_update
+
+    for task_in_db in task_instance._task:
+           if task_in_db.id == task.id:
+               # Update the fields that are provided    
+               if task.title:
+                   task_in_db.title = task.title
+               if task.description:
+                   task_in_db.description = task.description
+
+               task_in_db.updated_at = datetime.utcnow()  # refresh update time
+
+               return {
+                   "success": True,
+                   "data": task_in_db,
+                   "message": "Task updated successfully"
+               }
+
+
+# creat an endpoit to get user post using the user name

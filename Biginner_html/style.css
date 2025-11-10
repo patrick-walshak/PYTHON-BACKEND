@@ -1,0 +1,128 @@
+
+
+body{
+    background: linear-gradient(to left, rgb(177, 153, 109), #d3a54e);
+}
+
+.section {
+  margin-top: 10%;
+}
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 600px;
+}
+
+.head {
+    font-style: inherit;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size:larger;
+    color: purple;
+}
+
+a {
+    text-decoration: none;
+}
+
+.nav_bar {
+    display: flex;
+    gap: 20px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    color: purple;
+    list-style: none;
+    text-decoration: none;
+
+}
+
+.section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.login-container {
+    padding: 40px 30px;
+    background-color: antiquewhite;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    text-align: center;
+    border-radius: 10% / 50%;
+    
+}
+
+h4 {
+
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.input-box {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+
+.input {
+  display: block;
+  font-size: 14px;
+  color: #555;
+}
+
+
+.input-box input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+
+}
+
+
+.input-box input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.input-box input:focus {
+  border-color: #4facfe;
+}
+
+button {
+  width: 100%;
+  background-color: #007bff;
+  color: white;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  
+}
+
+button:hover {
+  background: blue;
+  transform: scale(1.05);
+}
+
+
+.register-link a {
+  color: #4facfe;
+  text-decoration: none;
+}
+
+.register-link a:hover {
+  text-decoration: underline;
+}
+
+
+
